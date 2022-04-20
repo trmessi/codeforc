@@ -29,9 +29,10 @@ __doapl(complex* ths, const complex& r)
 }
 //参数传递：尽量引用 pass by reference ,如果不希望改数据则const
 //返回值传递：尽量 return by reference.不能的情况：
-ostream&
+/*ostream&
 operator<<(ostream& os, const complex& x)
 {
 	return os << '(' << real(x) << '.'
 		<< imag(x) << ')';
 }
+*/
