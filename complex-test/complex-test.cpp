@@ -18,6 +18,6 @@ int main()
 	cout << (c1 == c2) << endl;
 	cout << (c1 != c2) << endl;
 	cout << conj(c1) << endl;
-	*/uybnhigyuyu
+	*/
 	return 0;
 }
