@@ -34,5 +34,5 @@ operator<<(ostream& os, const complex& x)
 {
 	return os << '(' << real(x) << '.'
 		<< imag(x) << ')';
-}
+}1
 */
