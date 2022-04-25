@@ -1,10 +1,13 @@
-#pragma once
+
 #ifndef __MYSTRING__
 #define __MYSTRING__
+#include<iostream>
+#pragma warning(disable:4996)
+using namespace std;
 class String
 {
 public:
-	String(const char* cstr = 0);
+	String(const char* cstr=0);
 	String(const String& str);
 	String& operator=(const String& str);//只要是带指针的类，就要带这两个构造函数
 	~String();
@@ -13,9 +16,9 @@ private:
 	char* m_data;
 };
 inline
-String::String(const char* cstr = 0)
+String::String(const char* cstr)
 {
-	if (cstr)
+	if (cstr!=0)
 	{
 		m_data = new char[strlen(cstr) + 1];
 		strcpy(m_data, cstr);
@@ -47,7 +50,11 @@ String& String::operator=(const String& str)
 	strcpy(m_data, str.m_data);
 	return *this;
 }
-
+ostream& operator <<(ostream& os, const String str)
+{
+	os << str.get_c_str();
+	return os;
+}
 
 
 #endif // !1

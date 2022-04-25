@@ -1,10 +1,10 @@
 #include<iostream>
-
-#include"string.h"
 using namespace std;
+#include"string.h"
+
 int main()
 {
-	String s1();
+	String s1("world");
 	String s2("hello");
 	String s3(s1);//¿½±´¹¹Ôìº¯Êý
 	cout << s3 << endl;
