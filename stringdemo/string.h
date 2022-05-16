@@ -14,6 +14,7 @@ public:
 	char* get_c_str() const { return m_data; }
 private:
 	char* m_data;
+	
 };
 inline
 String::String(const char* cstr)
