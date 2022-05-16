@@ -27,7 +27,7 @@ public:
 };
 void swap(int** m, int** n)
 {
-    //指针学习
+    //指针学习，
     int* temp = *m;
     *m = *n;
     *n = temp;
