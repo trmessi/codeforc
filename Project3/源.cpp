@@ -27,7 +27,7 @@ public:
 };
 void swap(int** m, int** n)
 {
-    //÷∏’Î
+    //÷∏’Î—ßœ∞
     int* temp = *m;
     *m = *n;
     *n = temp;
