@@ -22,7 +22,7 @@ Vector* init(int n)
 int expand(Vector* vec)
 {
 	vec->size *= 2;
-	vec->data= (int *)realloc(vec->data, sizeof(int) * vec->size);
+	vec->data= (int *)realloc(vec->data, sizeof(int) * vec->size);//
 	return 1;
 }
 int insert(Vector* vec,int ind,int val)
