@@ -1,6 +1,8 @@
 #include<unordered_map>
 #include<unordered_set>
 #include<vector>
+#include<stack>
+#include<string.h>
 using namespace std;
   struct ListNode {
       int val;
@@ -95,5 +97,45 @@ vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
         }
     }
     return sum;
+}
+int maxAreaOfIsland(vector<vector<int>>& grid) {
+    stack<std::pair<int, int>> mystack;
+    int ans = 0;
 
+    for (int i = 0; i < grid.size(); i++)
+    {
+        for (int j = 0; j < grid[i].size(); j++)
+        {
+            if (grid[i][j] == 2)
+                continue;
+            if (grid[i][j] == 0)
+                continue;
+            mystack.push(pair<int, int>(i, j));
+
+            while (!mystack.empty())
+            {
+                if (grid[i][j] == 2)
+                    continue;
+                if (grid[i][j] == 0)
+                    continue;
+                int coun = 0;
+                pair<int, int> mypair = mystack.top();
+                mystack.pop();
+                if (grid[mypair.first - 1][mypair.second] == 1) { mystack.push(pair<int, int>(mypair.first - 1, mypair.second)); coun++; grid[mypair.first - 1][mypair.second] = 0; }
+                if (grid[mypair.first + 1][mypair.second] == 1) {
+                    mystack.push(pair<int, int>(mypair.first + 1, mypair.second)); coun++;  grid[mypair.first + 1][mypair.second] = 0;
+                }
+                if (grid[mypair.first][mypair.second - 1] == 1) {
+                    mystack.push(pair<int, int>(mypair.first, mypair.second - 1)); coun++;
+                    grid[mypair.first][mypair.second - 1] = 0;
+                }
+                if (grid[mypair.first][mypair.second + 1] == 1) {
+                    mystack.push(pair<int, int>(mypair.first, mypair.second + 1)); coun++;
+                    grid[mypair.first][mypair.second + 1] = 0;
+                }
+                ans = max(ans, (int)mystack.size());
+            }
+        }
+    }
+    return ans;
 }
