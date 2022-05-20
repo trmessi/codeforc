@@ -20,4 +20,12 @@ int main()
 		}
 		output(q);
 	}
+	cout << " head: " << q->head << " tail: " << q->tail << " count: " << q->count<<endl;
+	for (int i = 0; i < MAX_OP; i++)
+	{
+		int val = rand() % 100;
+		cout << " push " << val << " to queue= " << push(q, val) << endl;;
+	}
+	output(q);
+	return 0;
 }

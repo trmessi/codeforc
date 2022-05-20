@@ -11,18 +11,19 @@ typedef struct Queue
 	int* data;
 	int head, tail;
 	int len;
+	int count;
 }Queue;
 Queue* init(int n)
 {
 	Queue* q = (Queue*)malloc(sizeof(Queue));
 	q->data = (int*)malloc(sizeof(int) * n);
-	q->head = q->tail = 0;
+	q->head = q->tail=q->count = 0;
 	q->len = n;
 	return q;
 }
 int empty(Queue* q)
 {
-	return q->head == q->tail;
+	return q->count == 0;
 }
 int front(Queue* q)
 {
@@ -31,8 +32,10 @@ int front(Queue* q)
 int push(Queue* q,int val)
 {
 	if (q == NULL)return 0;
-	if (q->tail == q->len) return 0;
+	if (q->count == q->len) return 0;
 	q->data[q->tail++] = val;
+	if (q->tail == q->len)q->tail -= q->len;
+	q->count += 1;
 	return 1;
 }
 void pop(Queue* q)
@@ -40,6 +43,8 @@ void pop(Queue* q)
 	if (q == NULL)return;
 	if (empty(q)) return;
 	q->head++;
+	if (q->head == q->len)q->head -= q->len;
+	q->count -= 1;
 	return;
 }
 void clear(Queue* q)
@@ -52,9 +57,10 @@ void clear(Queue* q)
 void output(Queue* q)
 {
 	cout << "queue=[";
-	for (int i = q->head; i < q->tail; i++)
+	for (int i = q->head,j=0; j<q->count; j++)
 	{
-		cout << q->data[i]<<" ";
+		int ind = (i + j) % q->len;
+		cout << q->data[ind]<<" ";
 	}
 	cout <<"]"<< endl;
 	return;
